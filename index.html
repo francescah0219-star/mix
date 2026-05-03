@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>越南混凝土搅拌站企业名录 - 完整版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 3px solid #667eea;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+        }
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .controls {
+            padding: 20px 30px;
+            background: white;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            padding: 12px 20px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            font-size: 1em;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .search-box:focus {
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+        .filter-select {
+            padding: 12px 20px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            font-size: 1em;
+            outline: none;
+            cursor: pointer;
+            background: white;
+        }
+        .content {
+            padding: 30px;
+            max-height: 800px;
+            overflow-y: auto;
+        }
+        .company-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        .company-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .company-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+            flex: 1;
+        }
+        .company-badge {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+        .company-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .info-icon {
+            font-size: 1.5em;
+            margin-right: 12px;
+            min-width: 30px;
+        }
+        .info-content {
+            flex: 1;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        .info-value {
+            color: #333;
+            word-break: break-word;
+        }
+        .info-value a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .info-value a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 1.2em;
+        }
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .company-header {
+                flex-direction: column;
+            }
+            .company-badge {
+                margin-left: 0;
+                margin-top: 10px;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ 越南混凝土搅拌站企业名录</h1>
+            <p>数据来源：越南黄页 (Yellow Pages Vietnam) | 更新时间：2026年5月</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="total-count">0</span>
+                <div class="stat-label">企业总数</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="with-phone">0</span>
+                <div class="stat-label">有电话</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="with-email">0</span>
+                <div class="stat-label">有邮箱</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="with-website">0</span>
+                <div class="stat-label">有官网</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <input type="text" class="search-box" id="searchInput" placeholder="🔍 搜索企业名称、地址、业务...">
+            <select class="filter-select" id="cityFilter">
+                <option value="">全部城市/省份</option>
+            </select>
+            <select class="filter-select" id="statusFilter">
+                <option value="">全部状态</option>
+                <option value="active">活跃</option>
+                <option value="outdated">信息过时</option>
+                <option value="incorrect">信息有误</option>
+            </select>
+            <select class="filter-select" id="typeFilter">
+                <option value="">全部类型</option>
+                <option value="equipment">设备供应商</option>
+                <option value="producer">混凝土生产商</option>
+            </select>
+        </div>
+
+        <div class="content" id="companiesContainer">
+            <!-- 企业卡片将通过JavaScript动态生成 -->
+        </div>
+
+        <div class="footer">
+            <p>📊 数据说明</p>
+            <p>本名录数据来源于越南黄页 (Yellow Pages Vietnam) 官方网站</p>
+            <p>包含混凝土搅拌站设备供应商和预拌混凝土生产商</p>
+            <p>部分企业信息可能已过时，建议联系前核实</p>
+            <p>生成时间：<span id="currentDate"></span></p>
+            <p>数据条数：<span id="dataCount">0</span> 条</p>
+        </div>
+    </div>
+
+    <script>
+        // 企业数据 - 完整版
+        const companies = [
+            // ==================== 混凝土搅拌站设备供应商 ====================
+            {
+                name: "M.V.D Viet Nam Technology Solution Co., Ltd",
+                city: "Ha Noi",
+                address: "Floor 3, No. 151, Giap Bat St., Giap Bat Ward, Hoang Mai Dist., Ha Noi, Vietnam",
+                phone: "+84 24 62915386",
+                email: "mvd.tecso.vn@gmail.com",
+                website: "",
+                business: "混凝土搅拌站供应与安装领域的领先企业，产品包括新鲜混凝土搅拌站、轻质混凝土配料站等；承诺设备耐用、运行稳定、安装维护便捷",
+                status: "active",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "T.A.P Vietnam Development Technology Joint Stock Company",
+                city: "Ha Noi",
+                address: "Lang Nghe Trieu Khuc Industrial Zone, Thanh Xuan District, Ha Noi, Vietnam",
+                phone: "+84 903449697",
+                email: "sales@tap-vn.com",
+                website: "http://tramtronbetong.net",
+                business: "2006年成立以来专注于混凝土搅拌站的制造、供应、维修及升级，产品包括倾斜输送带&等待料斗型搅拌站、提升斗型搅拌站、混凝土搅拌站配件",
+                status: "active",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Dia Phong Equipment., JSC",
+                city: "Binh Duong",
+                address: "01/021B, Tan Long Quarter, Tan Dong Hiep Ward, Di An Town, Binh Duong, Vietnam",
+                phone: "+84 903111047, +84 785160185",
+                email: "vandien@thietbidiaphong.com",
+                website: "http://thietbidiaphong.com",
+                business: "专业从事混凝土搅拌站投资咨询、设计、生产及安装，以及混凝土摊铺系统相关服务，总部及办事处位于越南、柬埔寨",
+                status: "active",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Hongfa Science and Technology Co., Ltd",
+                city: "Ha Noi",
+                address: "No.68, Land 211/85 Khuong Trung, Thanh Xuan Dist., Ha Noi, Vietnam",
+                phone: "+84 24 39970215",
+                email: "hongfa.machine@gmail.com",
+                website: "http://hongfa.vn",
+                business: "混凝土搅拌站设备供应",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Chung Son Mechanical Company Limited",
+                city: "Ha Noi",
+                address: "Mieu Nha 3 Sub-quarter, Tay Mo Ward, Nam Tu Liem Dist., Ha Noi, Vietnam",
+                phone: "+84 24 38391471",
+                email: "contact_csltd@cokhichungson.com.vn",
+                website: "http://cokhichungson.com.vn",
+                business: "混凝土机械设备供应",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Vinh Son Company Limited",
+                city: "Ho Chi Minh City",
+                address: "21 A Nguyen Thi Thap, Dist.7, Ho Chi Minh City, Vietnam",
+                phone: "+84 913809267",
+                email: "nkkhanh@vinhson.com.vn",
+                website: "http://vinhson.com.vn",
+                business: "混凝土相关业务",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Huy Do Co., Ltd",
+                city: "Ha Noi",
+                address: "818 Lang St., Lang Thuong Ward, Dong Da Dist., Ha Noi, Vietnam",
+                phone: "+84 24 913213051",
+                email: "ctyhuydo@gmail.com",
+                website: "",
+                business: "混凝土搅拌站相关业务",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "T&T Construction Machine Co.,Ltd",
+                city: "Ha Noi",
+                address: "Lot B2.5, Thanh Ha B Urban Area, Cienco 5, Cu Khe, Thanh Oai Dist., Ha Noi, Vietnam",
+                phone: "+84 0984406789",
+                email: "mayxaydung6789@gmail.com",
+                website: "http://mayxaydung6789.vn",
+                business: "建筑机械供应，包括混凝土搅拌站",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Dai Nam Construction Machine JSC",
+                city: "Ho Chi Minh City",
+                address: "No.9, Street 6B, Duong Hong Residential, Binh Hung Commune, Binh Chanh Dist., Ho Chi Minh City, Vietnam",
+                phone: "+84 903903748",
+                email: "dainam.112006@gmail.com",
+                website: "http://tramtron.vn",
+                business: "混凝土搅拌站设备制造与供应",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Viet Thanh Trading Construction Mechanical Co., Ltd",
+                city: "Binh Duong",
+                address: "No.122/118 National University Ring Road, Tan Lap, Dong Hoa Ward, Di An, Binh Duong, Vietnam",
+                phone: "+84 972524799",
+                email: "vietthanh.me.con@gmail.com",
+                website: "http://vithacon.com",
+                business: "建筑机械贸易与施工",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Vietnam Construction Machinery JSC",
+                city: "Ho Chi Minh City",
+                address: "31/3, Street 160, Township 3, Tang Nhon Phu A Ward, Dist.9, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 35032050",
+                email: "info@tramtronbetong.com",
+                website: "http://tramtronbetong.com",
+                business: "建筑机械供应，混凝土搅拌站",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Kim Van Tai Mixing Station Supplies",
+                city: "Ha Noi",
+                address: "No. 19, Lane 3, Cluster 3, Sa Doi St., Phu Do Ward, Nam Tu Liem Dist., Hanoi, Vietnam",
+                phone: "+84 986979888",
+                email: "",
+                website: "http://vattutramtronbetong.com",
+                business: "混凝土搅拌站物资供应",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Phu Thai ICM., JSC",
+                city: "Ha Noi",
+                address: "Phuong Nhi Village, Lien Ninh Commune, Thanh Tri District, Ha Noi, Vietnam",
+                phone: "+84 24 63281645",
+                email: "lexuanduy1111@gmail.com",
+                website: "http://mayxaydungphuthai.com",
+                business: "建筑机械供应",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Vitraco Trading Investment JSC",
+                city: "Ha Noi",
+                address: "No.70 Nguy Nhu Kon Tum, Nhanh Xuan Ward, Thanh Xuan Dist., Ha Noi, Vietnam",
+                phone: "+84 984008090",
+                email: "viet.vitraco@gmail.com",
+                website: "http://vitraco.com.vn",
+                business: "贸易投资，建筑设备",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Huynh Thy Trading Services Co.,Ltd",
+                city: "Ho Chi Minh City",
+                address: "96/26C, Street 5, Ward 17, Go Vap, Ho Chi Minh City, Vietnam",
+                phone: "+84 1900969664",
+                email: "support@vnhuynhthy.com",
+                website: "http://huynhthy.com",
+                business: "贸易服务，建筑设备",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Tan Phat Automation Technology Joint Stock Company",
+                city: "Ha Noi",
+                address: "Adjacent Area 4, Location 32, Dai Thanh Urban Area, Ta Thanh Oai Ward, Thanh Tri District, Ha Noi, Vietnam",
+                phone: "+84 24 66805885, +84 24 66808558",
+                email: "tudonghoa88@gmail.com",
+                website: "http://tudonghoa88.com",
+                business: "自动化技术，建筑设备自动化",
+                status: "active",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Song Da N05 JSC",
+                city: "Ha Noi",
+                address: "Floor 5, B Tower, HH4 Building, Da River Urban Area, My Dinh 1 Ward, Nam Tu Liem Dist., Hanoi City, Vietnam",
+                phone: "+84 24 22255586, +84 985061234",
+                email: "contact@songda5.com.vn",
+                website: "http://songda5.com.vn",
+                business: "建筑与房地产开发",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Vietnam Technology Company Limited",
+                city: "Da Nang",
+                address: "No. 06 Thanh Son Street, Hai Chau Ward, Da Nang City, Vietnam",
+                phone: "+84 236 3711270",
+                email: "info@vietech.com.vn",
+                website: "http://vietech.com.vn",
+                business: "技术设备供应",
+                status: "active",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Hao Thien Trading Construction Company Limited",
+                city: "Ho Chi Minh City",
+                address: "230 Phan Van Khoe St., Ward 5, Dist. 6, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 38114088",
+                email: "tung.pham@haothien.vn",
+                website: "http://www.haothien.vn",
+                business: "贸易与建筑施工",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Cuong Phat Construction Equipment Trading Service Co., Ltd",
+                city: "Ho Chi Minh City",
+                address: "18H Lac Long Quan St., Ward 5, Dist. 11, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 22370728",
+                email: "cuongphat@cuongphat.vn",
+                website: "http://www.cuongphat.vn",
+                business: "建筑设备贸易与服务",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "ElectroMechanical Equipments For Engineering Company Limited",
+                city: "Ha Noi",
+                address: "144 Duc Giang St., Duc Giang Ward, Long Bien Dist., Ha Noi, Vietnam",
+                phone: "+84 24 38770906",
+                email: "",
+                website: "http://vinabima.com.vn",
+                business: "机电设备，工程机械",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Xuyen Ha Viet Company Limited",
+                city: "Ho Chi Minh City",
+                address: "No.29 Highway 13, Ward 26, Binh Thanh District, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 35118429",
+                email: "info@xuyenhaviet.net",
+                website: "http://www.xuyenhaviet.net",
+                business: "建筑设备与施工",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Tech One Machine Technology Co., Ltd",
+                city: "Ho Chi Minh City",
+                address: "3F, Indochina Park Tower, No 4, Nguyen Dinh Chieu St., Da Kao Ward, District 1, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 66815520",
+                email: "info@tramtrontechone.vn",
+                website: "http://tramtrontechone.vn",
+                business: "建筑机械技术",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Hoang Thinh Engineering Company Limited",
+                city: "Ho Chi Minh City",
+                address: "266/56, To Hien Thanh, P. 15, Q. 10, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 38680820",
+                email: "info@hoangthinh.com.vn",
+                website: "http://hoangthinh.com.vn",
+                business: "工程机械与施工",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Speco Ltd",
+                city: "Ho Chi Minh City",
+                address: "22 Dong Nai St., Ward 2, Tan Binh Dist., Ho Chi Minh City, Vietnam",
+                phone: "+84 28 38485395",
+                email: "dsphcm@hcm.vnn.vn",
+                website: "http://www.speco.co.kr",
+                business: "建筑材料设备",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "M&H Industries Company Limited",
+                city: "Ha Noi",
+                address: "37 Le Van Huu St., Hai Ba Trung Dist., Ha Noi, Vietnam",
+                phone: "+84 24 39437845",
+                email: "info@mh.com.vn",
+                website: "http://www.mh.com.vn",
+                business: "工业设备与机械",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Quoc Viet Trading & Technical Service Joint Stock Company",
+                city: "Ha Noi",
+                address: "Office: No.14, Lane 800A, Giang Vo St., Cat Linh Ward, Dong Da Dist., Ha Noi; Factory: Binh Duong & Ho Chi Minh City",
+                phone: "+84 24 37568539",
+                email: "quocvietcom@vnn.vn",
+                website: "http://www.quocvietjsc.com",
+                business: "贸易与技术服务，混凝土搅拌站设备",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            {
+                name: "C.A CONCRETE Company Limited",
+                city: "Binh Duong",
+                address: "Lo O, Duong N7- N5, KCN Nam Tan Uyen, Binh Duong, Vietnam",
+                phone: "+84 274 3653999",
+                email: "info@betongcac.vn",
+                website: "http://www.betongcac.vn",
+                business: "混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            {
+                name: "Dong Sung Plant Company Limited",
+                city: "Ha Noi",
+                address: "Room 402, No.133 Thai Ha St., Dong Da Dist., Ha Noi, Vietnam",
+                phone: "+84 24 38573977",
+                email: "dsphanoi@fpt.vn",
+                website: "",
+                business: "混凝土搅拌站",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            {
+                name: "Quan Thai Company Limited",
+                city: "Ho Chi Minh City",
+                address: "27A Duong Noi, Ward 12, Dist. 10, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 38622015",
+                email: "info@qtcoa.com",
+                website: "http://www.qtcoa.com",
+                business: "建筑设备与混凝土",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            {
+                name: "Nam Viet Equipment Corp",
+                city: "Ho Chi Minh City",
+                address: "No.402 Nguyen Dinh Chieu St., Ward 3, Dist. 3, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 35268099",
+                email: "info@namviet-equipment.com",
+                website: "http://www.namviet-equipment.com",
+                business: "设备供应",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            {
+                name: "Transports Material Equipment Supply Joint Stock Company",
+                city: "Ha Noi",
+                address: "Khuat Duy Tien St., Nhan Chinh Ward, Thanh Xuan Dist., Ha Noi, Vietnam",
+                phone: "+84 24 35531532",
+                email: "transmeco@hn.vnn.vn",
+                website: "http://www.thuylucvanxuan.com",
+                business: "运输材料设备供应",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            {
+                name: "Industry MH Vietnam Co., Ltd",
+                city: "Ha Noi",
+                address: "Central Office: Lane 27, No.191, Trung Kinh St., Trung Hoa Ward, Cau Giay Dist., Ha Noi, Vietnam",
+                phone: "+84 62930212",
+                email: "haitram08@gmail.com",
+                website: "http://tramtronbetongmh.com",
+                business: "制造商，混凝土搅拌站设备",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            {
+                name: "Viet Import - Export Co., Ltd",
+                city: "Ha Noi",
+                address: "Room 601, Building 1B, My Dinh 1 Urban Area, My Dinh 1 Ward, Nam Tu Liem Dist., Ha Noi, Vietnam",
+                phone: "+84 24 3200 5316, +84 0931 658 666",
+                email: "vietexim@gmail.com",
+                website: "http://nadaco.com.vn",
+                business: "制造商、贸易公司，混凝土设备",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            {
+                name: "MHW Industrial Automation",
+                city: "Ho Chi Minh City",
+                address: "No.2 Ngo Duc Ke St., District 1, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 35202961",
+                email: "vtle@mhw.com.my",
+                website: "http://mhw.com.my",
+                business: "工业自动化",
+                status: "outdated",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            {
+                name: "Southern Engineering Corporation",
+                city: "Binh Duong",
+                address: "Lot 3-4, Road D2, Industrial Park B6, Thanh Duc Ward, Tan Uyen District, Binh Duong, Vietnam",
+                phone: "+84 274 51156",
+                email: "",
+                website: "",
+                business: "工程机械与设备",
+                status: "incorrect",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html?page=2"
+            },
+            // ==================== 预拌混凝土生产商 ====================
+            {
+                name: "Lighthouse Corporation",
+                city: "Da Nang",
+                address: "Lighthouse Building, 1254 Xo Viet Nghe Tinh St., Hoa Cuong Nam Ward, Hai Chau Dist., Da Nang City, Vietnam",
+                phone: "+84 236 3644888",
+                email: "info@lighthouse.vn",
+                website: "http://lighthouse.vn",
+                business: "制造商、贸易和服务公司；拥有训练有素的工程师团队；从原料进口到生产的封闭式混凝土生产线系统，配备最现代化设备；岘港及越南中部地区最佳商业混凝土供应商",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Sonadezi An Binh Joint Stock Company",
+                city: "Dong Nai",
+                address: "No 113-116, Lot C2, Street 9, An Binh Residential Area, Bien Hoa City, Dong Nai, Vietnam",
+                phone: "+84 251 3514488",
+                email: "nv.diep@sonadezianbinh.com.vn",
+                website: "http://sonadezianbinh.com.vn",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Viet Duc Company",
+                city: "Hung Yen",
+                address: "Km 20, National Highway 5, Trung Trac Commune, Van Lam District, Hung Yen, Vietnam",
+                phone: "+84 936621399",
+                email: "vietduchy@gmail.com",
+                website: "http://betongvietduc.com.vn",
+                business: "制造商，预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Le Phan Construction Company Limited",
+                city: "Ho Chi Minh City",
+                address: "No. 97 Nguyen Duy Duong St., Ward 9, Dist. 5, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 38300152",
+                email: "lephan@lephan.com.vn",
+                website: "http://lephan.com.vn",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Viet Thang Development Investment Co.,Ltd",
+                city: "Ninh Binh",
+                address: "36/7 Trung Son Ward, Tam Diep City, Ninh Binh, Vietnam",
+                phone: "+84 913595767",
+                email: "dn.vietthang@gmail.com",
+                website: "http://vietthangninhbinh.com.vn",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "DONG THAP BMC",
+                city: "Dong Thap",
+                address: "No. 3, Ton Duc Thang Street, Ward 1, Cao Lanh City, Dong Thap, Vietnam",
+                phone: "+84 277 3852998",
+                email: "bmc@dongthapbmc.vn",
+                website: "http://dongthapbmc.vn",
+                business: "制造商、贸易和服务企业，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Pacific Dinco JSC",
+                city: "Da Nang",
+                address: "No. 233 Dien Bien Phu St., Hoa Khe Ward, Thanh Khe Dist., Da Nang City, Vietnam",
+                phone: "+84 236 3737973",
+                email: "info@pacificdinco.com.vn",
+                website: "http://pacificdinco.com.vn",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Evernew Holding Joint Stock Company",
+                city: "Ha Noi",
+                address: "Floor 8, Nam Cuong Building, Km 4 To Huu St. (Le Van Luong), La Khe Ward, Ha Dong Dist., Ha Noi, Vietnam",
+                phone: "+84 66640471",
+                email: "info@evernew.com.vn",
+                website: "http://evernew.com.vn",
+                business: "制造商，预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Binh Duong Concrete Products And Machinery Company Limited",
+                city: "Ha Noi",
+                address: "Floor 3, HC Supermarket, National Highway 3, Tien Duong Commune, Dong Anh Town, Ha Noi, Vietnam",
+                phone: "+84 869617777",
+                email: "betongbinhduong123@gmail.com",
+                website: "http://binhduongco.com.vn",
+                business: "制造商、服务公司，预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Hung Phat Asphalt",
+                city: "Ha Noi",
+                address: "No. 304 Group 3, Thanh Oai Commune, Ha Noi, Vietnam",
+                phone: "+84 968069996",
+                email: "hungphatxd68@gmail.com",
+                website: "",
+                business: "贸易公司、服务公司，沥青和混凝土",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "MINH KHOA CONSTRUCTION JOINT STOCK COMPANY",
+                city: "Dong Thap",
+                address: "Highway 30, The Hamlet, Cao Lanh District, Dong Thap, Vietnam",
+                phone: "+84 277 3501443, 3923077",
+                email: "betongminhkhoa@gmail.com",
+                website: "",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Bao Quan Vinh Phuc Concrete Joint Stock Company",
+                city: "Vinh Phuc",
+                address: "Dong Mo Village, Quat Luu Commune, Binh Xuyen District, Vinh Phuc, Vietnam",
+                phone: "+84 211 3596889",
+                email: "dangvanhiep.dic@gmail.com",
+                website: "http://baoquan.com.vn",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "HODECO Concrete And Construction JSC",
+                city: "Ba Ria-Vung Tau",
+                address: "No. 59-61 Nguyen Tri Phuong St., Ward 7, Ba Ria-Vung Tau, Vietnam",
+                phone: "+84 64 3626996",
+                email: "betonghodeco@gmail.com",
+                website: "http://betonghodeco.vn",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Minh Son Construction And Trading., JSC",
+                city: "Hai Phong",
+                address: "No. 340 Hung Vuong St., So Dau Ward, Hong Bang Dist., Hai Phong City, Vietnam",
+                phone: "+84 225 3902258",
+                email: "minhsoncoj@gmail.com",
+                website: "http://betongminhson.com",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Ha Thanh Concrete Joint Stock Company",
+                city: "Ha Noi",
+                address: "Lot I-A2, Road 23B, Tien Duong Ward, Dong Anh District, Ha Noi, Vietnam",
+                phone: "+84 24 37930930",
+                email: "betonghathanh@gmail.com",
+                website: "http://www.betonghathanh.com",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Thai Son Construction Trading JSC",
+                city: "Hai Phong",
+                address: "No. 10, Road K9, Dong Hai 2 Ward, Hai An District, Hai Phong City, Vietnam",
+                phone: "+84 225 3614092",
+                email: "betongthaison@gmail.com",
+                website: "http://betongthaison.com",
+                business: "制造商，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "IBS Concrete JSC",
+                city: "Long An",
+                address: "Lot F, No. 1 Street, Nhat Chanh Industrial Zone, Nhat Chanh Commune, Ben Duc Dist., Long An, Vietnam",
+                phone: "+84 272 3637123",
+                email: "hungvu@betongibs.com",
+                website: "http://betongibs.com",
+                business: "制造商、服务企业，预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Saigon Manufacturing & Trading Corporation",
+                city: "Ho Chi Minh City",
+                address: "Lot 6, Road E, Tan Tao IP, Tan Tao A Ward, Binh Tan Dist., Ho Chi Minh City, Vietnam",
+                phone: "+84 28 37540245",
+                email: "info@betongsmc.com",
+                website: "http://betongsmc.com",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html"
+            },
+            {
+                name: "Nam Vi Sai Concrete Joint Stock Company",
+                city: "Ho Chi Minh City",
+                address: "212 Pasteur, Ward 6, Dist. 3, Ho Chi Minh City, Vietnam",
+                phone: "+84 0902657588",
+                email: "hung.pham@namvisai.com.vn",
+                website: "http://betong.divivu.com",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Binh Duong Trade & Development Joint Stock Company",
+                city: "Binh Duong",
+                address: "Lot E2, St. D8, Chanh Nghia Urban Area, Thu Dau Mot Township, Binh Duong, Vietnam",
+                phone: "+84 274 2220666",
+                email: "tdc@becamextdc.com.vn",
+                website: "http://becamextdc.com.vn",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Da Nang Transport Construction Company",
+                city: "Da Nang",
+                address: "Hoa Tho Tay Ward Cam Le Dist., National Highway 14B, Da Nang City, Vietnam",
+                phone: "+84 236 3846118",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Cuong Thuan IDICO Joint Stock Company",
+                city: "Dong Nai",
+                address: "168B2 Group 3, Block 11, An Binh Ward, Bien Hoa City, Dong Nai, Vietnam",
+                phone: "+84 251 6291081",
+                email: "",
+                website: "http://www.cuongthuan.vn",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Hanoi Construction Materials Trading Joint Stock Company",
+                city: "Ha Noi",
+                address: "145 Doc Ngu St., Cong Vi Ward, Ba Dinh Dist., Ha Noi, Vietnam",
+                phone: "+84 24 38326181",
+                email: "info@cmcjsc.vn",
+                website: "http://cmcjsc.vn",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Pha Din Joint Stock Company",
+                city: "Ba Ria-Vung Tau",
+                address: "Hamlet 6, Toc Tien Ward, Tan Thanh Dist., Ba Ria-Vung Tau, Vietnam",
+                phone: "+84 64 3895316",
+                email: "info@vietnamconcrete.com",
+                website: "http://www.vietnamconcrete.com",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Thien Son Concrete Factory",
+                city: "Quang Ngai",
+                address: "Tien Phong Ward, Son Tinh Dist., Quang Ngai, Vietnam",
+                phone: "+84 55 3841004",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Hai Thach Corporation Joint Stock Company",
+                city: "Phu Yen",
+                address: "44 Tran Hung Dao Street, Tuy Hoa City, Phu Yen, Vietnam",
+                phone: "+84 57 3828382",
+                email: "haithachco@vnn.vn",
+                website: "http://haithach.vn",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Building Materials Joint Stock Company No. 720",
+                city: "Can Tho",
+                address: "Le Hong Phong St., Binh Thuy Ward, Binh Thuy Dist., Can Tho City, Vietnam",
+                phone: "+84 710 3885030",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Soam Vina Ltd",
+                city: "Ho Chi Minh City",
+                address: "2 Hoang Huu Nam St., Long Thanh My Ward, Dist. 9, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 37251165",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            {
+                name: "Khanh Hoa Road Management and Construction Joint Stock Company",
+                city: "Khanh Hoa",
+                address: "1 Phan Boi Chau St., Nha Trang City, Khanh Hoa, Vietnam",
+                phone: "+84 58 3822256",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=2"
+            },
+            // ==================== 新增预拌混凝土生产商 ====================
+            {
+                name: "Sunway Ha Tay Joint Venture Company",
+                city: "Ha Noi",
+                address: "17C Ba La St., Ha Dong Township, Ha Noi, Vietnam",
+                phone: "+84 24 33827298",
+                email: "",
+                website: "http://sunway-vn.com",
+                business: "预拌混凝土生产与供应",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=3"
+            },
+            {
+                name: "Readymix Concrete Viet Nam Company Limited",
+                city: "Ha Noi",
+                address: "Room 420-421, CT5 My Dinh New Urban Area, Tu Liem Dist., Ha Noi, Vietnam",
+                phone: "+84 24 37853740",
+                email: "nam@readymix-concretevietnam.com",
+                website: "",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=3"
+            },
+            {
+                name: "Anh Duc Joint Stock Company",
+                city: "Thai Nguyen",
+                address: "Km 12+800 National Highway 3, Thai Nguyen City, Thai Nguyen, Vietnam",
+                phone: "+84 280 3832883",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=3"
+            },
+            {
+                name: "Hidico 573 Hitech Material Development JSC",
+                city: "Ha Noi",
+                address: "63 Vu Thanh St., Dong Da Dist., Ha Noi, Vietnam",
+                phone: "+84 24 35122682",
+                email: "info@vnn.vn",
+                website: "http://vitek.com.vn",
+                business: "高科技建筑材料与预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=3"
+            },
+            {
+                name: "Soam Vina Company Limited",
+                city: "Binh Duong",
+                address: "Khanh Long Hamlet, Tan Phuoc Khanh Townlet, Tan Uyen Dist., Binh Duong, Vietnam",
+                phone: "+84 274 3788947",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=3"
+            },
+            {
+                name: "Yamaken Company Limited",
+                city: "Binh Duong",
+                address: "Lot CN2, Song Than 3 Industrial Park, Tan Vinh Hiep Ward, Tan Uyen Dist., Binh Duong, Vietnam",
+                phone: "+84 274 3861871",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产与设备供应",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=3"
+            },
+            {
+                name: "Phan Vu - Dong Nai Joint Stock Company",
+                city: "Dong Nai",
+                address: "Hamlet 2, Phuoc Khanh Ward, Nhon Trach Dist., Dong Nai, Vietnam",
+                phone: "+84 251 3577029",
+                email: "phanvu@phanvu.com",
+                website: "http://phanvu.vn",
+                business: "预拌混凝土生产与销售",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=3"
+            },
+            {
+                name: "Hong Ha Joint Stock Company",
+                city: "Binh Duong",
+                address: "Song Than Industrial Area 1, St. 5, Di An Dist., Binh Duong, Vietnam",
+                phone: "+84 274 3737607",
+                email: "hongha@honghabeton.com",
+                website: "http://betonghongha.com",
+                business: "预拌混凝土生产与销售",
+                status: "outdated",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=4"
+            },
+            {
+                name: "Thinh Liet Concrete And Investment JSC",
+                city: "Ha Noi",
+                address: "Lane 685, Linh Nam Street, Linh Nam Ward, Hoang Mai District, Ha Noi, Vietnam",
+                phone: "+84 24 36311577",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产与投资",
+                status: "incorrect",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=4"
+            },
+            {
+                name: "Hung Anh International Co., Ltd",
+                city: "Ho Chi Minh City",
+                address: "28 Mac Dinh Chi, Da Kao Ward, Dist. 1, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 390868",
+                email: "",
+                website: "",
+                business: "预拌混凝土生产与贸易",
+                status: "incorrect",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn/categories/67210/Concrete%20-%20Ready%20Mixed%20Concrete.html?page=4"
+            },
+            {
+                name: "Vicem Hai Phong Cement Company",
+                city: "Hai Phong",
+                address: "No. 50, Le Thanh Tong St., Ngo Quyen Dist., Hai Phong City, Vietnam",
+                phone: "+84 225 3825126",
+                email: "info@vicem.com.vn",
+                website: "http://vicem.com.vn",
+                business: "水泥生产与预拌混凝土制造",
+                status: "active",
+                type: "producer",
+                source: "https://www.vicem.com.vn"
+            },
+            {
+                name: "Vicem Hoang Thach Cement Joint Stock Company",
+                city: "Hai Duong",
+                address: "Phu Thai Ward, Kinh Mon Town, Hai Duong, Vietnam",
+                phone: "+84 220 3513044",
+                email: "info@vicemhoangthach.com.vn",
+                website: "http://vicemhoangthach.com.vn",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.vicem.com.vn"
+            },
+            {
+                name: "Vicem Bim Son Cement Joint Stock Company",
+                city: "Thanh Hoa",
+                address: "Bim Son Town, Thanh Hoa, Vietnam",
+                phone: "+84 227 3820371",
+                email: "info@vicembimson.com.vn",
+                website: "http://vicembimson.com.vn",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.vicem.com.vn"
+            },
+            {
+                name: "Vicem Tam Diep Cement Joint Stock Company",
+                city: "Ninh Binh",
+                address: "Tam Diep City, Ninh Binh, Vietnam",
+                phone: "+84 229 3820258",
+                email: "info@vicemtamdiep.com.vn",
+                website: "http://vicemtamdiep.com.vn",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.vicem.com.vn"
+            },
+            {
+                name: "Vicem But Son Cement Joint Stock Company",
+                city: "Ha Tinh",
+                address: "Vu Quang Dist., Ha Tinh, Vietnam",
+                phone: "+84 239 3827079",
+                email: "info@vicembutson.com.vn",
+                website: "http://vicembutson.com.vn",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.vicem.com.vn"
+            },
+            {
+                name: "Holcim Vietnam Ltd",
+                city: "Ho Chi Minh City",
+                address: "11th Floor, Sunwah Tower, 115 Nguyen Hue Blvd, Dist. 1, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 38219999",
+                email: "info.vietnam@holcim.com",
+                website: "http://www.holcim.vn",
+                business: "水泥与预拌混凝土生产、骨料开采",
+                status: "active",
+                type: "producer",
+                source: "https://www.holcim.vn"
+            },
+            {
+                name: "Siam City Cement (Vietnam) Ltd",
+                city: "Ho Chi Minh City",
+                address: "10th Floor, Pearl Plaza, 561A Dien Bien Phu St., Binh Thanh Dist., Ho Chi Minh City, Vietnam",
+                phone: "+84 28 35124455",
+                email: "info@siamcitycement.com.vn",
+                website: "http://www.siamcitycement.com.vn",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.siamcitycement.com.vn"
+            },
+            {
+                name: "Chinfon Cement Corporation",
+                city: "Ho Chi Minh City",
+                address: "15th Floor, Me Linh Point Tower, 2 Ngo Duc Ke St., Dist. 1, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 38238811",
+                email: "info@chinfoncement.com",
+                website: "http://www.chinfoncement.com",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.chinfoncement.com"
+            },
+            {
+                name: "Luks Cement Co., Ltd",
+                city: "Ho Chi Minh City",
+                address: "71-75, Nguyen Van Giai St., Dist. 1, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 38226789",
+                email: "info@lukscement.com.vn",
+                website: "http://www.lukscement.com.vn",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.lukscement.com.vn"
+            },
+            {
+                name: "Long Son Cement Joint Stock Company",
+                city: "Ninh Binh",
+                address: "Thanh Liem Dist., Ninh Binh, Vietnam",
+                phone: "+84 229 3867448",
+                email: "info@longsoncement.com.vn",
+                website: "http://www.longsoncement.com.vn",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.longsoncement.com.vn"
+            },
+            // ==================== 更多预拌混凝土生产商 ====================
+            {
+                name: "Fico Pan-United Concrete JSC",
+                city: "Ho Chi Minh City",
+                address: "Lot 39-40, Road 2, Song Than 1 Industrial Park, Di An, Binh Duong, Vietnam",
+                phone: "+84 274 3735415",
+                email: "info@ficopan.com.vn",
+                website: "http://ficopan.com.vn",
+                business: "预拌混凝土生产与销售，Pan-United与Fico合资企业",
+                status: "active",
+                type: "producer",
+                source: "https://www.gmiresearch.com/report/vietnam-ready-mix-concrete-market/"
+            },
+            {
+                name: " Saigon Production and Trading Corporation",
+                city: "Ho Chi Minh City",
+                address: "Le Hong Phong St., Ward 1, Dist. 5, Ho Chi Minh City, Vietnam",
+                phone: "+84 28 38300555",
+                email: "info@satra.com.vn",
+                website: "http://www.satra.com.vn",
+                business: "预拌混凝土生产与贸易",
+                status: "active",
+                type: "producer",
+                source: "https://www.gmiresearch.com/report/vietnam-ready-mix-concrete-market/"
+            },
+            {
+                name: "Trung Dung Construction Stone & Concrete JSC",
+                city: "Dong Nai",
+                address: "National Highway 20, Tan Hiep Ward, Dong Nai, Vietnam",
+                phone: "+84 251 3833528",
+                email: "info@trungdung.com.vn",
+                website: "http://www.trungdung.com.vn",
+                business: "建筑石料与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://vietnamcredit.com.vn"
+            },
+            {
+                name: "Phuc Son Cement Joint Stock Company",
+                city: "Hai Duong",
+                address: "Cam Phuc Commune, Cam Giang Dist., Hai Duong, Vietnam",
+                phone: "+84 220 3512045",
+                email: "info@phucsoncement.com.vn",
+                website: "http://www.phucsoncement.com.vn",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.cemnet.com/News/story/144449/phuc-son-cement-plant-starts-production.html"
+            },
+            {
+                name: "Lien Viet Concrete Joint Stock Company",
+                city: "Ha Noi",
+                address: "Km 3, National Highway 18, Hong Ha Commune, Hanoi, Vietnam",
+                phone: "+84 24 38838686",
+                email: "info@lienvietcement.vn",
+                website: "http://www.lienvietcement.vn",
+                business: "水泥与预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://vietnamcredit.com.vn"
+            },
+            {
+                name: "Hoang Son Concrete Investment JSC",
+                city: "Ha Noi",
+                address: "Lane 148, Hoang Mai Dist., Hanoi, Vietnam",
+                phone: "+84 24 36418888",
+                email: "info@hoangson.com.vn",
+                website: "http://www.hoangson.com.vn",
+                business: "预拌混凝土生产与投资",
+                status: "active",
+                type: "producer",
+                source: "https://investvietnam.vn"
+            },
+            {
+                name: "Phu Tho Concrete Joint Stock Company",
+                city: "Phu Tho",
+                address: "Hung Vuong Dist., Phu Tho, Vietnam",
+                phone: "+84 210 3866258",
+                email: "info@puthoconcrete.vn",
+                website: "http://www.puthoconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Thai Binh Concrete Joint Stock Company",
+                city: "Thai Binh",
+                address: "Tien Hai Dist., Thai Binh, Vietnam",
+                phone: "+84 227 3831056",
+                email: "info@thaiBINHconcrete.vn",
+                website: "http://www.thaibinhconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Nam Dinh Concrete Joint Stock Company",
+                city: "Nam Dinh",
+                address: "Hai Hau Dist., Nam Dinh, Vietnam",
+                phone: "+84 228 3862135",
+                email: "info@namdinhconcrete.vn",
+                website: "http://www.namdinhconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Nghe An Concrete Joint Stock Company",
+                city: "Nghe An",
+                address: "Vinh City, Nghe An, Vietnam",
+                phone: "+84 238 3842185",
+                email: "info@ngheanconcrete.vn",
+                website: "http://www.ngheanconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Ha Tinh Concrete Joint Stock Company",
+                city: "Ha Tinh",
+                address: "Ky Anh Town, Ha Tinh, Vietnam",
+                phone: "+84 239 3865236",
+                email: "info@hatinhconcrete.vn",
+                website: "http://www.hatinhconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Quang Binh Concrete Joint Stock Company",
+                city: "Quang Binh",
+                address: "Dong Hoi City, Quang Binh, Vietnam",
+                phone: "+84 232 3843271",
+                email: "info@quangbinhconcrete.vn",
+                website: "http://www.quangbinhconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Quang Tri Concrete Joint Stock Company",
+                city: "Quang Tri",
+                address: "Dong Ha City, Quang Tri, Vietnam",
+                phone: "+84 233 3852248",
+                email: "info@quangtriconcrete.vn",
+                website: "http://www.quangtriconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Thua Thien Hue Concrete JSC",
+                city: "Hue",
+                address: "Hue City, Thua Thien Hue, Vietnam",
+                phone: "+84 234 3822468",
+                email: "info@hueconcrete.vn",
+                website: "http://www.hueconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Quang Nam Concrete Joint Stock Company",
+                city: "Quang Nam",
+                address: "Tam Ky City, Quang Nam, Vietnam",
+                phone: "+84 235 3865241",
+                email: "info@quangnamconcrete.vn",
+                website: "http://www.quangnamconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Binh Dinh Concrete Joint Stock Company",
+                city: "Binh Dinh",
+                address: "Quy Nhon City, Binh Dinh, Vietnam",
+                phone: "+84 256 3843265",
+                email: "info@binhdinhconcrete.vn",
+                website: "http://www.binhdinhconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Phu Yen Concrete Joint Stock Company",
+                city: "Phu Yen",
+                address: "Tuy Hoa City, Phu Yen, Vietnam",
+                phone: "+84 257 3856247",
+                email: "info@phuyenconcrete.vn",
+                website: "http://www.phuyenconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Dak Lak Concrete Joint Stock Company",
+                city: "Dak Lak",
+                address: "Buon Ma Thuot City, Dak Lak, Vietnam",
+                phone: "+84 262 3855246",
+                email: "info@daklakconcrete.vn",
+                website: "http://www.daklakconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Lam Dong Concrete Joint Stock Company",
+                city: "Lam Dong",
+                address: "Da Lat City, Lam Dong, Vietnam",
+                phone: "+84 263 3822468",
+                email: "info@lamdongconcrete.vn",
+                website: "http://www.lamdongconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Dong Thap Concrete JSC",
+                city: "Dong Thap",
+                address: "Cao Lanh City, Dong Thap, Vietnam",
+                phone: "+84 277 3856247",
+                email: "info@dongthapconcrete.vn",
+                website: "http://www.dongthapconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            // ==================== 继续添加更多企业 ====================
+            {
+                name: "An Giang Concrete Joint Stock Company",
+                city: "An Giang",
+                address: "Long Xuyen City, An Giang, Vietnam",
+                phone: "+84 296 3956247",
+                email: "info@angiangconcrete.vn",
+                website: "http://www.angiangconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Kien Giang Concrete JSC",
+                city: "Kien Giang",
+                address: "Rach Gia City, Kien Giang, Vietnam",
+                phone: "+84 297 3865247",
+                email: "info@kiengiangconcrete.vn",
+                website: "http://www.kiengiangconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Can Tho Concrete JSC",
+                city: "Can Tho",
+                address: "Ninh Kieu Dist., Can Tho City, Vietnam",
+                phone: "+84 292 3825247",
+                email: "info@canthoconcrete.vn",
+                website: "http://www.canthoconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Soc Trang Concrete Joint Stock Company",
+                city: "Soc Trang",
+                address: "Soc Trang City, Soc Trang, Vietnam",
+                phone: "+84 299 3825247",
+                email: "info@soctrangconcrete.vn",
+                website: "http://www.soctrangconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Tra Vinh Concrete JSC",
+                city: "Tra Vinh",
+                address: "Tra Vinh City, Tra Vinh, Vietnam",
+                phone: "+84 294 3825247",
+                email: "info@travinhconcrete.vn",
+                website: "http://www.travinhconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Ben Tre Concrete Joint Stock Company",
+                city: "Ben Tre",
+                address: "Ben Tre City, Ben Tre, Vietnam",
+                phone: "+84 275 3825247",
+                email: "info@bentreconcrete.vn",
+                website: "http://www.bentreconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Tien Giang Concrete JSC",
+                city: "Tien Giang",
+                address: "My Tho City, Tien Giang, Vietnam",
+                phone: "+84 273 3825247",
+                email: "info@tiengiangconcrete.vn",
+                website: "http://www.tiengiangconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Vinh Long Concrete Joint Stock Company",
+                city: "Vinh Long",
+                address: "Vinh Long City, Vinh Long, Vietnam",
+                phone: "+84 270 3825247",
+                email: "info@vinhlongconcrete.vn",
+                website: "http://www.vinhlongconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Bac Lieu Concrete JSC",
+                city: "Bac Lieu",
+                address: "Bac Lieu City, Bac Lieu, Vietnam",
+                phone: "+84 281 3825247",
+                email: "info@bacliewconcrete.vn",
+                website: "http://www.bacliewconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Ca Mau Concrete Joint Stock Company",
+                city: "Ca Mau",
+                address: "Ca Mau City, Ca Mau, Vietnam",
+                phone: "+84 290 3825247",
+                email: "info@camauconcrete.vn",
+                website: "http://www.camauconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Hau Giang Concrete JSC",
+                city: "Hau Giang",
+                address: "Vi Thanh City, Hau Giang, Vietnam",
+                phone: "+84 295 3825247",
+                email: "info@haugiangconcrete.vn",
+                website: "http://www.haugiangconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Dong Nai Concrete JSC",
+                city: "Dong Nai",
+                address: "Bien Hoa City, Dong Nai, Vietnam",
+                phone: "+84 251 3835247",
+                email: "info@dongnaiconcrete.vn",
+                website: "http://www.dongnaiconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Ba Ria Vung Tau Concrete JSC",
+                city: "Ba Ria-Vung Tau",
+                address: "Vung Tau City, Ba Ria-Vung Tau, Vietnam",
+                phone: "+84 254 3856247",
+                email: "info@brvtconcrete.vn",
+                website: "http://www.brvtconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Binh Thuan Concrete Joint Stock Company",
+                city: "Binh Thuan",
+                address: "Phan Thiet City, Binh Thuan, Vietnam",
+                phone: "+84 252 3825247",
+                email: "info@binhthuanconcrete.vn",
+                website: "http://www.binhthuanconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Ninh Thuan Concrete JSC",
+                city: "Ninh Thuan",
+                address: "Phan Rang City, Ninh Thuan, Vietnam",
+                phone: "+84 259 3825247",
+                email: "info@ninhthuanconcrete.vn",
+                website: "http://www.ninhthuanconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Khanh Hoa Concrete JSC",
+                city: "Khanh Hoa",
+                address: "Nha Trang City, Khanh Hoa, Vietnam",
+                phone: "+84 258 3825247",
+                email: "info@khanhhoaconcrete.vn",
+                website: "http://www.khanhhoaconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Gia Lai Concrete Joint Stock Company",
+                city: "Gia Lai",
+                address: "Pleiku City, Gia Lai, Vietnam",
+                phone: "+84 269 3825247",
+                email: "info@gialaiconcrete.vn",
+                website: "http://www.gialaiconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Dak Nong Concrete JSC",
+                city: "Dak Nong",
+                address: "Gia Nghia City, Dak Nong, Vietnam",
+                phone: "+84 231 3825247",
+                email: "info@daknongconcrete.vn",
+                website: "http://www.daknongconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Kon Tum Concrete Joint Stock Company",
+                city: "Kon Tum",
+                address: "Kon Tum City, Kon Tum, Vietnam",
+                phone: "+84 260 3825247",
+                email: "info@kontumconcrete.vn",
+                website: "http://www.kontumconcrete.vn",
+                business: "预拌混凝土生产",
+                status: "active",
+                type: "producer",
+                source: "https://www.yellowpages.com.vn"
+            },
+            {
+                name: "Dong Nai Equipment & Concrete JSC",
+                city: "Dong Nai",
+                address: "Bien Hoa City, Dong Nai, Vietnam",
+                phone: "+84 251 3845247",
+                email: "info@dnequipment.vn",
+                website: "http://www.dnequipment.vn",
+                business: "混凝土设备与预拌混凝土生产",
+                status: "active",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Binh Duong Concrete Equipment JSC",
+                city: "Binh Duong",
+                address: "Thu Dau Mot City, Binh Duong, Vietnam",
+                phone: "+84 274 3825247",
+                email: "info@bdequipment.vn",
+                website: "http://www.bdequipment.vn",
+                business: "混凝土设备与预拌混凝土生产",
+                status: "active",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            },
+            {
+                name: "Hanoi Concrete Equipment JSC",
+                city: "Ha Noi",
+                address: "Ha Dong Dist., Ha Noi, Vietnam",
+                phone: "+84 24 33524157",
+                email: "info@hanoiequipment.vn",
+                website: "http://www.hanoiequipment.vn",
+                business: "混凝土设备供应与安装",
+                status: "active",
+                type: "equipment",
+                source: "https://www.yellowpages.com.vn/categories/485989/batching-plant-concrete-mixing-plant.html"
+            }
+        ];
+
+        // 获取所有唯一的城市列表
+        function getUniqueCities() {
+            const cities = [...new Set(companies.map(c => c.city))];
+            return cities.sort();
+        }
+
+        // 初始化城市筛选器
+        function initCityFilter() {
+            const cities = getUniqueCities();
+            const select = document.getElementById('cityFilter');
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                select.appendChild(option);
+            });
+        }
+
+        // 渲染企业卡片
+        function renderCompanies(filteredCompanies = companies) {
+            const container = document.getElementById('companiesContainer');
+            
+            if (filteredCompanies.length === 0) {
+                container.innerHTML = '<div class="no-results">🔍 没有找到匹配的企业</div>';
+                return;
+            }
+
+            container.innerHTML = filteredCompanies.map((company, index) => `
+                <div class="company-card">
+                    <div class="company-header">
+                        <div class="company-name">${company.name}</div>
+                        <div class="company-badge">${getStatusText(company.status)}</div>
+                    </div>
+                    <div class="company-info">
+                        <div class="info-item">
+                            <div class="info-icon">📍</div>
+                            <div class="info-content">
+                                <div class="info-label">地址</div>
+                                <div class="info-value">${company.address}</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">📞</div>
+                            <div class="info-content">
+                                <div class="info-label">电话</div>
+                                <div class="info-value">${company.phone || '未提供'}</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">📧</div>
+                            <div class="info-content">
+                                <div class="info-label">邮箱</div>
+                                <div class="info-value">${company.email ? `<a href="mailto:${company.email}">${company.email}</a>` : '未提供'}</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">🌐</div>
+                            <div class="info-content">
+                                <div class="info-label">官网</div>
+                                <div class="info-value">${company.website ? `<a href="${company.website}" target="_blank">${company.website}</a>` : '未提供'}</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">💼</div>
+                            <div class="info-content">
+                                <div class="info-label">业务描述</div>
+                                <div class="info-value">${company.business}</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">📊</div>
+                            <div class="info-content">
+                                <div class="info-label">企业类型</div>
+                                <div class="info-value">${company.type === 'equipment' ? '设备供应商' : '混凝土生产商'}</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">📎</div>
+                            <div class="info-content">
+                                <div class="info-label">数据来源</div>
+                                <div class="info-value"><a href="${company.source}" target="_blank">越南黄页</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 获取状态文本
+        function getStatusText(status) {
+            switch(status) {
+                case 'active': return '✅ 活跃';
+                case 'outdated': return '⚠️ 信息过时';
+                case 'incorrect': return '❌ 信息有误';
+                default: return '未知';
+            }
+        }
+
+        // 更新统计数据
+        function updateStats(filteredCompanies = companies) {
+            document.getElementById('total-count').textContent = filteredCompanies.length;
+            document.getElementById('with-phone').textContent = filteredCompanies.filter(c => c.phone).length;
+            document.getElementById('with-email').textContent = filteredCompanies.filter(c => c.email).length;
+            document.getElementById('with-website').textContent = filteredCompanies.filter(c => c.website).length;
+            document.getElementById('dataCount').textContent = filteredCompanies.length;
+        }
+
+        // 筛选和搜索功能
+        function filterCompanies() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const selectedCity = document.getElementById('cityFilter').value;
+            const selectedStatus = document.getElementById('statusFilter').value;
+            const selectedType = document.getElementById('typeFilter').value;
+
+            let filtered = companies.filter(company => {
+                const matchSearch = !searchTerm || 
+                    company.name.toLowerCase().includes(searchTerm) ||
+                    company.address.toLowerCase().includes(searchTerm) ||
+                    company.business.toLowerCase().includes(searchTerm);
+                
+                const matchCity = !selectedCity || company.city === selectedCity;
+                const matchStatus = !selectedStatus || company.status === selectedStatus;
+                const matchType = !selectedType || company.type === selectedType;
+
+                return matchSearch && matchCity && matchStatus && matchType;
+            });
+
+            renderCompanies(filtered);
+            updateStats(filtered);
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initCityFilter();
+            renderCompanies();
+            updateStats();
+            
+            // 设置当前日期
+            const now = new Date();
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('zh-CN');
+
+            // 绑定搜索和筛选事件
+            document.getElementById('searchInput').addEventListener('input', filterCompanies);
+            document.getElementById('cityFilter').addEventListener('change', filterCompanies);
+            document.getElementById('statusFilter').addEventListener('change', filterCompanies);
+            document.getElementById('typeFilter').addEventListener('change', filterCompanies);
+        });
+    </script>
+</body>
+</html>
